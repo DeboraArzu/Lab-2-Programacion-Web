@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Cloth } from '../cloth';
+import {CLOTHES} from '../mock-clothes';
 
 
 @Component({
@@ -9,14 +10,16 @@ import { Cloth } from '../cloth';
 })
 export class ClothesComponent implements OnInit {
 
-  cloth: Cloth = {
-    id: 1,
-    name: 'Windstorm'
-  };
+  clothes = CLOTHES;
+  selectedCloth: Cloth;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect(cloth: Cloth): void{
+    this.selectedCloth = cloth;
   }
 
 }
