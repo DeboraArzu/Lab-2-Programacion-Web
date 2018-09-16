@@ -1,7 +1,13 @@
 /* HeroesComponent's private CSS styles */
+h2{
+  color: rgb(90, 41, 5);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+    font-style: italic;
+}
 .selected {
-    background-color: #CFD8DC !important;
-    color: white;
+    background-color: rgb(201, 214, 219) !important;
+    color: rgb(255, 255, 255);
   }
   .clothes {
     margin: 0 0 2em 0;
@@ -13,7 +19,7 @@
     cursor: pointer;
     position: relative;
     left: 0;
-    background-color: #EEE;
+    background-color: rgb(241, 239, 78);
     margin: .5em;
     padding: .3em 0;
     height: 1.6em;
@@ -37,7 +43,7 @@
     font-size: small;
     color: white;
     padding: 0.8em 0.7em 0 0.7em;
-    background-color: #607D8B;
+    background-color: hsl(17, 82%, 50%);
     line-height: 1em;
     position: relative;
     left: -1px;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',

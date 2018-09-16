@@ -1,24 +1,24 @@
-<h2>My Selection</h2>
-<ul class="clothes">
-    <li *ngFor="let cloth of clothes"
-    [class.selected]="cloth === selectedCloth"
-    (click)="onSelect(cloth)">
-    <span class="badge">{{cloth.id}}</span> {{cloth.name}}
-  </li>
-</ul>
-<div *ngIf="selectedCloth">
- 
-    <h2>{{selectedCloth.name | uppercase}} Details</h2>
-    <div><span>id: </span>{{selectedCloth.id}}</div>
-    <div>
-      <label>name:
-        <input [(ngModel)]="selectedCloth.name" placeholder="name">
-      </label>
-    </div>
-    <div><span>cost: </span>{{selectedCloth.cost}}</div>
-    <div>
-      <label>size:
-        <input [(ngModel)]="selectedCloth.size" placeholder="size">
-      </label>
-    </div>
-  </div>
+    <h2>My Selection</h2>
+    <ul class="clothes">
+        <li *ngFor="let cloth of clothes"
+        [class.selected]="cloth === selectedCloth"
+        (click)="onSelect(cloth)">
+        <span class="badge">{{cloth.id}}</span> {{cloth.name}}
+      </li>
+    </ul>
+    <div *ngIf="selectedCloth">
+     
+        <h2>{{selectedCloth.name | uppercase}} Details</h2>
+        <div><span>id: </span>{{selectedCloth.id}}</div>
+        <div>
+          <label>name:
+            <input [(ngModel)]="selectedCloth.name" placeholder="name">
+          </label>
+        </div>
+        <div><span>cost: </span>{{selectedCloth.cost}}</div>
+        <div>
+          <label>size:
+            <input [(ngModel)]="selectedCloth.size" placeholder="size">
+          </label>
+        </div>
+      </div>
