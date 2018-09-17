@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { AppComponent } from './app.component';
 import { ClothesComponent } from './clothes/clothes.component';
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -12,7 +14,7 @@ import { ClothesComponent } from './clothes/clothes.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
