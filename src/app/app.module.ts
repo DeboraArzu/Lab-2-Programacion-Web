@@ -4,8 +4,7 @@ import { FormsModule } from '@angular/forms'; // <-- NgModel lives here
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { Inject, Injectable } from '@angular/core';
 import { SESSION_STORAGE, StorageService } from 'angular-webstorage-service';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ClothesComponent } from './clothes/clothes.component';
 import { NavbarComponent } from './navbar/navbar.component';
