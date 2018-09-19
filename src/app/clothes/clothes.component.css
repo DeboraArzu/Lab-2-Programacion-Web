@@ -5,6 +5,7 @@ h2{
     font-size: xx-large;
     font-style: italic;
 }
+
 .selected {
     background-color: rgb(201, 214, 219) !important;
     color: rgb(255, 255, 255);
@@ -55,7 +56,13 @@ h2{
   .comment{
     color: red;
     font-size: small;
+    margin: .5em;
+    padding: .3em 0;
   }
   .space{
     margin-right: 5px;
+    margin-left: 5px;
+  }
+  #details{
+    margin: 5em;
   }

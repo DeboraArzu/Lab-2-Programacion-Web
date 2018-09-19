@@ -8,7 +8,7 @@
       </li>
     </ul>
     <!--propiedad del objeto selccionado -->
-    <div *ngIf="selectedCloth">
+    <div *ngIf="selectedCloth" id="details">
         <h2>{{selectedCloth.name | uppercase}} Details</h2>
         <div><span>codigo: </span>{{selectedCloth.codigo}}</div>
         <div>
