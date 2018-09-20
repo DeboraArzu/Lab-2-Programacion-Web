@@ -8,12 +8,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { ClothesComponent } from './clothes/clothes.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { NewItemComponent } from './new-item/new-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ClothesComponent,
-    NavbarComponent
+    NavbarComponent,
+    NewItemComponent,
   ],
   imports: [
     BrowserModule,

@@ -37,7 +37,7 @@ h2{
   }
   .clothes .text {
     position: relative;
-    top: -3px;
+    top: 1px;
   }
   .clothes .badge {
     display: inline-block;
