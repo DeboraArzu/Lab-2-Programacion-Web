@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { ClothesComponent } from './clothes/clothes.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewItemComponent } from './new-item/new-item.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewItemComponent } from './new-item/new-item.component';
     BrowserModule,
     FormsModule,
     StorageServiceModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
