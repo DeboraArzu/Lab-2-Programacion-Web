@@ -1,20 +1,74 @@
-<<!doctype html>
-<html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
-  </head>
-  <body>
-      
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
-  </body>
-</html>
+<div class="container">
+  <div class="reglist">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Codigo</th>
+          <th>Name</th>
+          <th>Cost</th>
+          <th>Size</th>
+          <th>Color</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let newitem of newitems; let i = index">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ newitem.codigo }}</td>
+          <td>{{ newitem.name }}</td>
+          <td>{{ newitem.cost }}</td>
+          <td>{{ newitem.size }}</td>
+          <td>{{ newitem.color }}</td>
+          <td>
+            <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-right">
+      <button type="submit" class="btn btn-primary" (click)="onNew()">New</button>
+    </div>
+  </div>
+  <br>
+  <div class="regentry" *ngIf="showNew">
+    <form (ngSubmit)="onSave()">
+      <div class="form-group row">
+        <label for="codigo-input" class="col-2 col-form-label">Codigo</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.codigo" name="codigo">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="name-input" class="col-2 col-form-label">Name</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.name" name="name">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cost-input" class="col-2 col-form-label">Cost</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.cost" name="cost">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="size-input" class="col-2 col-form-label">Size</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.size" name="size">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="color-input" class="col-2 col-form-label">Color</label>
+        <div class="col-10">
+          <input class="form-control" type="text" [(ngModel)]="regModel.color" name="color">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">{{submitType}}</button>
+      <button type="submit" class="btn btn-primary" (click)="onCancel()">Cancel</button>
+    </form>
+  </div>
+</div>
