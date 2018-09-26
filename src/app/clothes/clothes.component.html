@@ -1,32 +1,4 @@
-    <!--listado de los objetos-->
-    <h2>My Selection</h2>
-    <ul class="clothes">
-        <li *ngFor="let cloth of clothes"
-        [class.selected]="cloth === selectedCloth"
-        (click)="onSelect(cloth)">
-        <span class="badge">{{cloth.codigo}}</span> {{cloth.name}}
-      </li>
-    </ul>
-    <!--propiedad del objeto selccionado -->
-    <div *ngIf="selectedCloth" id="details">
-        <h2>{{selectedCloth.name | uppercase}} Details</h2>
-        <div><span>codigo: </span>{{selectedCloth.codigo}}</div>
-        <div>
-          <label>name:
-            <input [(ngModel)]="selectedCloth.name" placeholder="name">
-          </label>
-        </div>
-        <div><span>cost: </span>{{selectedCloth.cost}}</div>
-        <div>
-          <label>size:
-            <input [(ngModel)]="selectedCloth.size" placeholder="size">
-          </label>
-        </div>
-        <div class="row">
-          <button class="space">Edit</button>
-          <button class="space">Delete</button>
-      </div>
-<!--comentario al final-->
-      <div>
-        <p class="comment">*All prices are in quetzales</p>
-      </div>
+<body class="bg">
+  <h1>This project was made with Angular and bootstrap</h1>
+  <h2>By Débora Arzu 1098913</h2>
+</body>
