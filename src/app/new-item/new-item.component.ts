@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 class Newitem{
   constructor(
@@ -8,11 +7,11 @@ class Newitem{
     public Cost: string = '',
     public Size: string = '',
     public Color: string = '',
-  ) {}
+  ){}
 }
 
 @Component({
-  selector: 'NewItem',
+  selector: 'app-new-item',
   templateUrl: './new-item.component.html',
   styleUrls: ['./new-item.component.css']
 })
@@ -84,6 +83,4 @@ export class NewItemComponent implements OnInit {
     // Hide registration entry section.
     this.showNew = false;
   }
-
-
 }

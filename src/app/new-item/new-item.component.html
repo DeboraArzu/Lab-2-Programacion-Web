@@ -16,11 +16,11 @@
       <tbody>
         <tr *ngFor="let newitem of newitems; let i = index">
           <th scope="row">{{ i + 1 }}</th>
-          <td>{{ newitem.codigo }}</td>
-          <td>{{ newitem.name }}</td>
-          <td>{{ newitem.cost }}</td>
-          <td>{{ newitem.size }}</td>
-          <td>{{ newitem.color }}</td>
+          <td>{{ newitem.Codigo }}</td>
+          <td>{{ newitem.Name }}</td>
+          <td>{{ newitem.Cost }}</td>
+          <td>{{ newitem.Size }}</td>
+          <td>{{ newitem.Color }}</td>
           <td>
             <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
           </td>
@@ -40,31 +40,31 @@
       <div class="form-group row">
         <label for="codigo-input" class="col-2 col-form-label">Codigo</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="regModel.codigo" name="codigo">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Codigo" name="Codigo">
         </div>
       </div>
       <div class="form-group row">
         <label for="name-input" class="col-2 col-form-label">Name</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="regModel.name" name="name">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Name" name="Name">
         </div>
       </div>
       <div class="form-group row">
         <label for="cost-input" class="col-2 col-form-label">Cost</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="regModel.cost" name="cost">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Cost" name="Cost">
         </div>
       </div>
       <div class="form-group row">
         <label for="size-input" class="col-2 col-form-label">Size</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="regModel.size" name="size">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Size" name="Size">
         </div>
       </div>
       <div class="form-group row">
         <label for="color-input" class="col-2 col-form-label">Color</label>
         <div class="col-10">
-          <input class="form-control" type="text" [(ngModel)]="regModel.color" name="color">
+          <input class="form-control" type="text" [(ngModel)]="regModel.Color" name="Color">
         </div>
       </div>
       <button type="submit" class="btn btn-success">{{submitType}}</button>
