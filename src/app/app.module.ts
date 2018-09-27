@@ -10,6 +10,7 @@ import { ClothesComponent } from './clothes/clothes.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { NewItemComponent } from './new-item/new-item.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { AppRoutingModule } from './app-routing.module';
     ClothesComponent,
     NavbarComponent,
     NewItemComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
