@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
-class Newitem{
+class Newitem {
   constructor(
     public Codigo: string = '',
     public Name: string = '',
     public Cost: string = '',
     public Size: string = '',
     public Color: string = '',
-  ){}
+  ) { }
 }
 
 @Component({
@@ -25,14 +25,33 @@ export class NewItemComponent implements OnInit {
   submitType: string = 'Save';
   // It maintains table row index based on selection.
   selectedRow: number;
-  constructor() { 
+  constructor() {
+    let item = {
+      codigo:"56",
+      nombre:"playera",
+      precio:"150",
+      size:"S",
+      color:"white"
+    }
     this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
+    localStorage.setItem("item1", JSON.stringify(item));
+  }
+
+  grabar_localstorage(codigo:string, nombre:string, precio:string, size:string, color:string, number:number){
+    let item = {
+      codigo:codigo,
+      nombre:nombre,
+      precio:precio,
+      size:size,
+      color:color
+    }
+    localStorage.setItem("number", JSON.stringify(item));
   }
 
   ngOnInit() {
   }
   // This method associate to New Button.
-  onNew(){
+  onNew() {
     // Initiate new registration.
     this.regModel = new Newitem();
     // Change submitType to 'Save'.
@@ -46,6 +65,7 @@ export class NewItemComponent implements OnInit {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
       this.newitems.push(this.regModel);
+      this.grabar_localstorage(this.regModel.Codigo,this.regModel.Name,this.regModel.Cost,this.regModel.Size,this.regModel.Color,1 );
     } else {
       // Update the existing properties values based on model.
       this.newitems[this.selectedRow].Codigo = this.regModel.Codigo;
@@ -53,6 +73,7 @@ export class NewItemComponent implements OnInit {
       this.newitems[this.selectedRow].Cost = this.regModel.Cost;
       this.newitems[this.selectedRow].Size = this.regModel.Size;
       this.newitems[this.selectedRow].Color = this.regModel.Color;
+      this.grabar_localstorage(this.regModel.Codigo,this.regModel.Name,this.regModel.Cost,this.regModel.Size,this.regModel.Color,1 );
     }
     // Hide registration entry section.
     this.showNew = false;
