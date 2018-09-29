@@ -27,6 +27,7 @@ export class NewItemComponent implements OnInit {
   selectedRow: number;
   constructor() { 
     this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
+  
   }
 
   ngOnInit() {
