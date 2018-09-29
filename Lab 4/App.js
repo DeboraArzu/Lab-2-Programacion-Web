@@ -7,6 +7,10 @@ app.get('/hello/:name', (req, res) => {
     res.send('Hello' + name)
 })
 
+app.get('', (req, res) =>{
+  res.send('Lab-4  By Debora Arzu')
+})
+
 app.listen(3000, () => {
     console.log("Running in http://localhost:3000")
 })
