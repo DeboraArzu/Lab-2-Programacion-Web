@@ -27,26 +27,29 @@ export class NewItemComponent implements OnInit {
   selectedRow: number;
   constructor() {
     let item = {
-      codigo:"56",
-      nombre:"playera",
-      precio:"150",
-      size:"S",
-      color:"white"
+      codigo: "56",
+      nombre: "playera",
+      precio: "150",
+      size: "S",
+      color: "white"
     }
     this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
     localStorage.setItem("item1", JSON.stringify(item));
   }
 
-  grabar_localstorage(codigo:string, nombre:string, precio:string, size:string, color:string, number:number){
+  grabar_localstorage(codigo: string, nombre: string, precio: string, size: string, color: string, number: number) {
     let item = {
-      codigo:codigo,
-      nombre:nombre,
-      precio:precio,
-      size:size,
-      color:color
+      codigo: codigo,
+      nombre: nombre,
+      precio: precio,
+      size: size,
+      color: color
     }
-    localStorage.setItem("number", JSON.stringify(item));
+    localStorage.setItem(codigo, JSON.stringify(item));
   }
+  obtener_locarsotage(codigo:string) {
+    let item = JSON.parse(localStorage.getItem(codigo));
+    }
 
   ngOnInit() {
   }
@@ -65,15 +68,15 @@ export class NewItemComponent implements OnInit {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
       this.newitems.push(this.regModel);
-      this.grabar_localstorage(this.regModel.Codigo,this.regModel.Name,this.regModel.Cost,this.regModel.Size,this.regModel.Color,1 );
+      this.grabar_localstorage(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color, 1);
     } else {
+      this.grabar_localstorage(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color, 1);
       // Update the existing properties values based on model.
       this.newitems[this.selectedRow].Codigo = this.regModel.Codigo;
       this.newitems[this.selectedRow].Name = this.regModel.Name;
       this.newitems[this.selectedRow].Cost = this.regModel.Cost;
       this.newitems[this.selectedRow].Size = this.regModel.Size;
       this.newitems[this.selectedRow].Color = this.regModel.Color;
-      this.grabar_localstorage(this.regModel.Codigo,this.regModel.Name,this.regModel.Cost,this.regModel.Size,this.regModel.Color,1 );
     }
     // Hide registration entry section.
     this.showNew = false;
@@ -94,9 +97,10 @@ export class NewItemComponent implements OnInit {
   }
 
   // This method associate to Delete Button.
-  onDelete(index: number) {
+  onDelete(index: number, codigo:string) {
     // Delete the corresponding registration entry from the list.
     this.newitems.splice(index, 1);
+    localStorage.removeItem(codigo);
   }
 
   // This method associate toCancel Button.
