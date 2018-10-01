@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalStorageService} from '../local-storage.service';
+import { Injectable } from '@angular/core';
 
 class Newitem {
   constructor(
@@ -10,6 +10,10 @@ class Newitem {
     public Color: string = '',
   ) { }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-new-item',
@@ -27,32 +31,24 @@ export class NewItemComponent implements OnInit {
   // It maintains table row index based on selection.
   selectedRow: number;
   constructor() {
-    let item = {
-      codigo: "56",
-      nombre: "playera",
-      precio: "150",
-      size: "S",
-      color: "white"
-    }
-    this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
-    localStorage.setItem("item1", JSON.stringify(item));
+    //this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
+    //this.addItem(new Newitem('1', 'Short', '150', 'M', 'White'));
   }
-
-  grabar_localstorage(codigo: string, nombre: string, precio: string, size: string, color: string, number: number) {
-    let item = {
-      codigo: codigo,
-      nombre: nombre,
-      precio: precio,
-      size: size,
-      color: color
+  addItem(newitem: Newitem) {
+    this.newitems.push(newitem);
+    let newitems = [];
+    if (localStorage.getItem('items') === null) {
+      newitems = [];
+      newitems.push(newitem);
+      localStorage.setItem('items', JSON.stringify(newitems));
+    } else {
+      newitems = JSON.parse(localStorage.getItem('items'));
+      newitems.push(newitem);
+      localStorage.setItem('items', JSON.stringify(newitems));
     }
-    localStorage.setItem(codigo, JSON.stringify(item));
   }
-  obtener_locarsotage(codigo:string) {
-    let item = JSON.parse(localStorage.getItem(codigo));
-    }
-
   ngOnInit() {
+    this.newitems = this.getItems();
   }
   // This method associate to New Button.
   onNew() {
@@ -68,10 +64,10 @@ export class NewItemComponent implements OnInit {
   onSave() {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
-      this.newitems.push(this.regModel);
-      this.grabar_localstorage(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color, 1);
+      //this.newitems.push(this.regModel);
+      this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
     } else {
-      this.grabar_localstorage(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color, 1);
+      this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
       // Update the existing properties values based on model.
       this.newitems[this.selectedRow].Codigo = this.regModel.Codigo;
       this.newitems[this.selectedRow].Name = this.regModel.Name;
@@ -98,12 +94,29 @@ export class NewItemComponent implements OnInit {
   }
 
   // This method associate to Delete Button.
-  onDelete(index: number, codigo:string) {
-    // Delete the corresponding registration entry from the list.
-    this.newitems.splice(index, 1);
-    localStorage.removeItem(codigo);
+  onDelete(index: number) {
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.newitems.splice(index, 1);
+      this.Delete(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
+    }
+  }
+  Delete(newitem: Newitem) {
+    for (let i = 0; i < this.newitems.length; i++) {
+      if (newitem == this.newitems[i]) {
+        this.newitems.splice(i, 1);
+        localStorage.setItem('items', JSON.stringify(this.newitems));
+      }
+    }
   }
 
+  getItems() {
+    if (localStorage.getItem('items') === null) {
+      this.newitems = [];
+    } else {
+      this.newitems = JSON.parse(localStorage.getItem('items'));
+    }
+    return this.newitems;
+  }
   // This method associate toCancel Button.
   onCancel() {
     // Hide registration entry section.

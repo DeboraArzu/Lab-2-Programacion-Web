@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Cloth } from '../app/cloth';
-import { NewItemComponent } from './new-item/new-item.component';
 
 @Injectable({
   providedIn: 'root'
