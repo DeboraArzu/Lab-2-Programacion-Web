@@ -1,14 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 
-class Newitem{
+class Newitem {
   constructor(
     public Codigo: string = '',
     public Name: string = '',
     public Cost: string = '',
     public Size: string = '',
     public Color: string = '',
-  ){}
+  ) { }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
 
 @Component({
   selector: 'app-new-item',
@@ -25,15 +30,34 @@ export class NewItemComponent implements OnInit {
   submitType: string = 'Save';
   // It maintains table row index based on selection.
   selectedRow: number;
+<<<<<<< HEAD
   constructor() { 
     this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
   
+=======
+  constructor() {
+    //this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
+    //this.addItem(new Newitem('1', 'Short', '150', 'M', 'White'));
   }
-
+  addItem(newitem: Newitem) {
+    this.newitems.push(newitem);
+    let newitems = [];
+    if (localStorage.getItem('items') === null) {
+      newitems = [];
+      newitems.push(newitem);
+      localStorage.setItem('items', JSON.stringify(newitems));
+    } else {
+      newitems = JSON.parse(localStorage.getItem('items'));
+      newitems.push(newitem);
+      localStorage.setItem('items', JSON.stringify(newitems));
+    }
+>>>>>>> master
+  }
   ngOnInit() {
+    this.newitems = this.getItems();
   }
   // This method associate to New Button.
-  onNew(){
+  onNew() {
     // Initiate new registration.
     this.regModel = new Newitem();
     // Change submitType to 'Save'.
@@ -46,8 +70,10 @@ export class NewItemComponent implements OnInit {
   onSave() {
     if (this.submitType === 'Save') {
       // Push registration model object into registration list.
-      this.newitems.push(this.regModel);
+      //this.newitems.push(this.regModel);
+      this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
     } else {
+      this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
       // Update the existing properties values based on model.
       this.newitems[this.selectedRow].Codigo = this.regModel.Codigo;
       this.newitems[this.selectedRow].Name = this.regModel.Name;
@@ -75,10 +101,28 @@ export class NewItemComponent implements OnInit {
 
   // This method associate to Delete Button.
   onDelete(index: number) {
-    // Delete the corresponding registration entry from the list.
-    this.newitems.splice(index, 1);
+    if (confirm('Are you sure you want to delete this task?')) {
+      this.newitems.splice(index, 1);
+      this.Delete(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
+    }
+  }
+  Delete(newitem: Newitem) {
+    for (let i = 0; i < this.newitems.length; i++) {
+      if (newitem == this.newitems[i]) {
+        this.newitems.splice(i, 1);
+        localStorage.setItem('items', JSON.stringify(this.newitems));
+      }
+    }
   }
 
+  getItems() {
+    if (localStorage.getItem('items') === null) {
+      this.newitems = [];
+    } else {
+      this.newitems = JSON.parse(localStorage.getItem('items'));
+    }
+    return this.newitems;
+  }
   // This method associate toCancel Button.
   onCancel() {
     // Hide registration entry section.

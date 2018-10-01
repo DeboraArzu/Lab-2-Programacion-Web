@@ -4,7 +4,6 @@ import {ClothesComponent} from './clothes/clothes.component';
 import { NewItemComponent } from './new-item/new-item.component';
 import { HomeComponent } from './home/home.component';
 
-
 const routes:Routes = [
   {path: 'clothes', component: ClothesComponent },
   {path: 'NewItem', component: NewItemComponent },
@@ -12,7 +11,10 @@ const routes:Routes = [
 ];
 
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
-  exports: [ RouterModule ]
+  imports: [ 
+    RouterModule.forRoot(routes) ],
+  exports: [ 
+    RouterModule,
+   ]
 })
 export class AppRoutingModule {}
