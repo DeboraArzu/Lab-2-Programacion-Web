@@ -42,14 +42,14 @@ export class NewItemComponent implements OnInit {
   addItem(newitem: Newitem) {
     this.newitems.push(newitem);
     let newitems = [];
-    if (localStorage.getItem('items') === null) {
+    if (localStorage.getItem('item') === null) {
       newitems = [];
       newitems.push(newitem);
-      localStorage.setItem('items', JSON.stringify(newitems));
+      localStorage.setItem('item', JSON.stringify(newitems));
     } else {
-      newitems = JSON.parse(localStorage.getItem('items'));
+      newitems = JSON.parse(localStorage.getItem('item'));
       newitems.push(newitem);
-      localStorage.setItem('items', JSON.stringify(newitems));
+      localStorage.setItem('item', JSON.stringify(newitems));
     }
 >>>>>>> master
   }
@@ -73,7 +73,7 @@ export class NewItemComponent implements OnInit {
       //this.newitems.push(this.regModel);
       this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
     } else {
-      this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
+     // this.addItem(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
       // Update the existing properties values based on model.
       this.newitems[this.selectedRow].Codigo = this.regModel.Codigo;
       this.newitems[this.selectedRow].Name = this.regModel.Name;
@@ -100,26 +100,26 @@ export class NewItemComponent implements OnInit {
   }
 
   // This method associate to Delete Button.
-  onDelete(index: number) {
+  onDelete(index: number, newitem:Newitem) {
     if (confirm('Are you sure you want to delete this task?')) {
       this.newitems.splice(index, 1);
-      this.Delete(new Newitem(this.regModel.Codigo, this.regModel.Name, this.regModel.Cost, this.regModel.Size, this.regModel.Color));
+      this.Delete(newitem);
     }
   }
   Delete(newitem: Newitem) {
     for (let i = 0; i < this.newitems.length; i++) {
       if (newitem == this.newitems[i]) {
         this.newitems.splice(i, 1);
-        localStorage.setItem('items', JSON.stringify(this.newitems));
+        localStorage.setItem('item', JSON.stringify(this.newitems));
       }
     }
   }
 
   getItems() {
-    if (localStorage.getItem('items') === null) {
+    if (localStorage.getItem('item') === null) {
       this.newitems = [];
     } else {
-      this.newitems = JSON.parse(localStorage.getItem('items'));
+      this.newitems = JSON.parse(localStorage.getItem('item'));
     }
     return this.newitems;
   }
