@@ -30,11 +30,6 @@ export class NewItemComponent implements OnInit {
   submitType: string = 'Save';
   // It maintains table row index based on selection.
   selectedRow: number;
-<<<<<<< HEAD
-  constructor() { 
-    this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
-  
-=======
   constructor() {
     //this.newitems.push(new Newitem('1', 'Short', '150', 'M', 'White'));
     //this.addItem(new Newitem('1', 'Short', '150', 'M', 'White'));
@@ -51,7 +46,6 @@ export class NewItemComponent implements OnInit {
       newitems.push(newitem);
       localStorage.setItem('item', JSON.stringify(newitems));
     }
->>>>>>> master
   }
   ngOnInit() {
     this.newitems = this.getItems();
